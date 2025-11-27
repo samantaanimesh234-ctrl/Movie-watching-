@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieFlix - Watch Movies Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Movie<span>Flix</span></a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="#hollywood" class="nav-link">Hollywood</a>
+                <a href="#bollywood" class="nav-link">Bollywood</a>
+                <a href="#south-indian" class="nav-link">South Indian</a>
+                <a href="admin.html" class="nav-link admin-btn">Admin</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unlimited Movies, TV Shows and More.</h1>
+            <p>Watch anywhere. Cancel anytime.</p>
+            <button class="cta-btn">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Movie Sections -->
+    <main class="main-content">
+        <!-- Featured Movies -->
+        <section class="movie-section" id="featured">
+            <h2 class="section-title">Featured Movies</h2>
+            <div class="movies-grid" id="featured-movies">
+                <!-- Movies will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Hollywood Movies -->
+        <section class="movie-section" id="hollywood">
+            <h2 class="section-title">Hollywood Movies</h2>
+            <div class="movies-grid" id="hollywood-movies">
+                <!-- Movies will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Bollywood Movies -->
+        <section class="movie-section" id="bollywood">
+            <h2 class="section-title">Bollywood Movies</h2>
+            <div class="movies-grid" id="bollywood-movies">
+                <!-- Movies will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- South Indian Movies -->
+        <section class="movie-section" id="south-indian">
+            <h2 class="section-title">South Indian Movies</h2>
+            <div class="movies-grid" id="south-indian-movies">
+                <!-- Movies will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 MovieFlix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Movie Details Modal -->
+    <div class="modal" id="movie-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <div class="modal-body" id="modal-body">
+                <!-- Movie details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
