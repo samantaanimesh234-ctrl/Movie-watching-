@@ -1,193 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieFlix - Admin Panel</title>
-    <link rel="stylesheet" href="admin.css">
-</head>
-<body>
-    <!-- Login Screen -->
-    <div class="login-container" id="login-container">
-        <div class="login-form">
-            <h2>Admin Login</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <input type="text" id="username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="login-btn">Login</button>
-                <p id="login-error" class="error-message"></p>
-            </form>
+<!-- In Add Movie Tab -->
+<div class="form-row">
+    <div class="form-group">
+        <label for="movie-poster">Poster URL or Upload</label>
+        <input type="text" id="movie-poster" placeholder="Or enter image URL">
+        <input type="file" id="poster-upload" accept="image/*" class="file-upload">
+        <div class="image-preview" id="poster-preview"></div>
+    </div>
+</div>
+
+<!-- In Cast Members Section -->
+<div class="form-group">
+    <label>Cast Members</label>
+    <div id="cast-members">
+        <div class="cast-member-input">
+            <input type="text" class="cast-name" placeholder="Actor Name" required>
+            <input type="text" class="cast-photo" placeholder="Or enter photo URL">
+            <input type="file" class="cast-photo-upload" accept="image/*">
+            <div class="image-preview small-preview"></div>
+            <button type="button" class="remove-cast-btn">Remove</button>
         </div>
     </div>
-
-    <!-- Admin Dashboard -->
-    <div class="admin-dashboard" id="admin-dashboard" style="display: none;">
-        <!-- Admin Header -->
-        <header class="admin-header">
-            <div class="admin-nav">
-                <div class="admin-logo">
-                    <h2>MovieFlix <span>Admin</span></h2>
-                </div>
-                <div class="admin-actions">
-                    <button id="logout-btn" class="logout-btn">Logout</button>
-                </div>
-            </div>
-        </header>
-
-        <!-- Admin Content -->
-        <main class="admin-content">
-            <div class="admin-sidebar">
-                <ul class="admin-menu">
-                    <li><a href="#" class="menu-item active" data-tab="add-movie">Add Movie</a></li>
-                    <li><a href="#" class="menu-item" data-tab="edit-movies">Edit Movies</a></li>
-                    <li><a href="#" class="menu-item" data-tab="manage-menu">Manage Menu</a></li>
-                </ul>
-            </div>
-
-            <div class="admin-main">
-                <!-- Add Movie Tab -->
-                <div class="tab-content active" id="add-movie">
-                    <h3>Add New Movie</h3>
-                    <form id="add-movie-form" class="admin-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="movie-title">Movie Title</label>
-                                <input type="text" id="movie-title" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="movie-category">Category</label>
-                                <select id="movie-category" required>
-                                    <option value="">Select Category</option>
-                                    <option value="hollywood">Hollywood</option>
-                                    <option value="bollywood">Bollywood</option>
-                                    <option value="south-indian">South Indian</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="movie-year">Release Year</label>
-                                <input type="text" id="movie-year" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="movie-poster">Poster URL</label>
-                                <input type="text" id="movie-poster" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="movie-description">Description</label>
-                            <textarea id="movie-description" rows="4" required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="movie-watch-link">Watch Link</label>
-                            <input type="text" id="movie-watch-link" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Cast Members</label>
-                            <div id="cast-members">
-                                <div class="cast-member-input">
-                                    <input type="text" class="cast-name" placeholder="Actor Name" required>
-                                    <input type="text" class="cast-photo" placeholder="Photo URL" required>
-                                    <button type="button" class="remove-cast-btn">Remove</button>
-                                </div>
-                            </div>
-                            <button type="button" id="add-cast-btn" class="add-cast-btn">Add Another Cast Member</button>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Add Movie</button>
-                    </form>
-                </div>
-
-                <!-- Edit Movies Tab -->
-                <div class="tab-content" id="edit-movies">
-                    <h3>Edit Movies</h3>
-                    <div class="movies-list" id="admin-movies-list">
-                        <!-- Movies will be loaded here -->
-                    </div>
-                </div>
-
-                <!-- Manage Menu Tab -->
-                <div class="tab-content" id="manage-menu">
-                    <h3>Manage Navigation Menu</h3>
-                    <form id="menu-form" class="admin-form">
-                        <div class="form-group">
-                            <label for="menu-items">Menu Items (comma separated)</label>
-                            <input type="text" id="menu-items" value="Home, Hollywood, Bollywood, South Indian" required>
-                        </div>
-                        <button type="submit" class="submit-btn">Save Menu</button>
-                    </form>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Edit Movie Modal -->
-    <div class="modal" id="edit-movie-modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-edit-modal">&times;</span>
-            <h3>Edit Movie</h3>
-            <form id="edit-movie-form" class="admin-form">
-                <input type="hidden" id="edit-movie-id">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="edit-movie-title">Movie Title</label>
-                        <input type="text" id="edit-movie-title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit-movie-category">Category</label>
-                        <select id="edit-movie-category" required>
-                            <option value="hollywood">Hollywood</option>
-                            <option value="bollywood">Bollywood</option>
-                            <option value="south-indian">South Indian</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="edit-movie-year">Release Year</label>
-                        <input type="text" id="edit-movie-year" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit-movie-poster">Poster URL</label>
-                        <input type="text" id="edit-movie-poster" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="edit-movie-description">Description</label>
-                    <textarea id="edit-movie-description" rows="4" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="edit-movie-watch-link">Watch Link</label>
-                    <input type="text" id="edit-movie-watch-link" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Cast Members</label>
-                    <div id="edit-cast-members">
-                        <!-- Cast members will be added here -->
-                    </div>
-                    <button type="button" id="edit-add-cast-btn" class="add-cast-btn">Add Another Cast Member</button>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="submit" class="submit-btn">Update Movie</button>
-                    <button type="button" id="delete-movie-btn" class="delete-btn">Delete Movie</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="admin.js"></script>
-</body>
-</html>
+    <button type="button" id="add-cast-btn" class="add-cast-btn">Add Another Cast Member</button>
+</div>
