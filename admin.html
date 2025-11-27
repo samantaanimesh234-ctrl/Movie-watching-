@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Login Section -->
+    <div id="login-section" class="login-container">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="adminLogin()" class="btn-primary">Login</button>
+            <p id="errorMsg" style="color:red; display:none; margin-top:10px;">Invalid Credentials</p>
+        </div>
+    </div>
+
+    <!-- Dashboard Section (Hidden by default) -->
+    <div id="dashboard-section" style="display: none;">
+        <nav class="admin-nav">
+            <h2>Admin Dashboard</h2>
+            <button onclick="adminLogout()" class="btn-danger">Logout</button>
+        </nav>
+
+        <div class="dashboard-container">
+            <!-- Add/Edit Form -->
+            <div class="form-panel">
+                <h3 id="formTitle">Add New Movie</h3>
+                <input type="hidden" id="movieId"> <!-- Hidden ID for Editing -->
+                
+                <label>Movie Title</label>
+                <input type="text" id="mTitle">
+
+                <label>Category</label>
+                <select id="mCategory">
+                    <option value="Hollywood">Hollywood</option>
+                    <option value="Bollywood">Bollywood</option>
+                    <option value="South">South Indian</option>
+                </select>
+
+                <label>Description</label>
+                <textarea id="mDesc" rows="3"></textarea>
+
+                <label>Watch Link</label>
+                <input type="text" id="mLink" placeholder="https://...">
+
+                <label>Poster Image</label>
+                <input type="file" id="mPoster" accept="image/*">
+                <div id="posterPreview"></div>
+
+                <h4>Cast Members</h4>
+                <div class="cast-inputs">
+                    <div>
+                        <input type="text" id="castName1" placeholder="Actor 1 Name">
+                        <input type="file" id="castImg1" accept="image/*">
+                    </div>
+                    <div>
+                        <input type="text" id="castName2" placeholder="Actor 2 Name">
+                        <input type="file" id="castImg2" accept="image/*">
+                    </div>
+                </div>
+
+                <button onclick="saveMovie()" class="btn-success">Save Movie</button>
+                <button onclick="resetForm()" class="btn-secondary">Clear</button>
+            </div>
+
+            <!-- Movie List -->
+            <div class="list-panel">
+                <h3>Added Movies</h3>
+                <table class="movie-table">
+                    <thead>
+                        <tr>
+                            <th>Poster</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminMovieList">
+                        <!-- Rows generated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
