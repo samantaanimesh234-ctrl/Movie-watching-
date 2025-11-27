@@ -1,0 +1,82 @@
+:root {
+    --primary: #e50914;
+    --dark: #141414;
+    --light: #ffffff;
+    --gray: #aaa;
+    --green: #46d369;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--dark); color: var(--light); }
+
+/* Navigation */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 100;
+}
+.logo { font-size: 2rem; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
+.logo span { color: var(--light); }
+
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links li { cursor: pointer; transition: 0.3s; color: var(--gray); }
+.nav-links li:hover, .nav-links li.active { color: var(--light); font-weight: bold; }
+
+.search-box input {
+    background: #333; border: none; padding: 8px; color: white; border-radius: 4px;
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh; background: linear-gradient(rgba(0,0,0,0.5), var(--dark)), url('https://source.unsplash.com/random/1600x900/?cinema') center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.hero h1 { font-size: 3rem; margin-bottom: 15px; }
+.btn-red { background: var(--primary); color: white; border: none; padding: 10px 25px; font-size: 1rem; cursor: pointer; border-radius: 4px; transition: 0.3s; text-decoration: none; display: inline-block;}
+.btn-red:hover { background: #b20710; }
+
+/* Movie Grid */
+.container { padding: 40px 5%; }
+.section-title { border-left: 5px solid var(--primary); padding-left: 10px; margin-bottom: 20px; }
+
+.movie-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;
+}
+
+.movie-card {
+    background: #1f1f1f; border-radius: 8px; overflow: hidden; transition: transform 0.3s; cursor: pointer; position: relative;
+}
+.movie-card:hover { transform: scale(1.05); z-index: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
+
+.movie-card img { width: 100%; height: 300px; object-fit: cover; }
+.card-info { padding: 10px; }
+.card-info h3 { font-size: 1rem; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.category { font-size: 0.8rem; color: var(--gray); }
+
+/* Modal */
+.modal {
+    display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
+}
+.modal-content {
+    background-color: #181818; margin: 5% auto; padding: 20px; width: 80%; max-width: 900px;
+    display: flex; gap: 20px; border-radius: 10px; position: relative;
+}
+.close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; }
+.modal-poster img { width: 300px; height: 450px; object-fit: cover; border-radius: 5px; }
+.modal-info { flex: 1; }
+.match { color: var(--green); font-weight: bold; margin-right: 15px; }
+.cast-list { display: flex; gap: 10px; margin: 15px 0; }
+.cast-member { text-align: center; }
+.cast-member img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+.cast-member span { display: block; font-size: 0.7rem; color: var(--gray); margin-top: 5px; }
+.watch-btn { margin-top: 20px; display: inline-flex; align-items: center; gap: 10px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content { flex-direction: column; height: 90vh; overflow-y: scroll; margin: 5% auto; }
+    .modal-poster img { width: 100%; height: auto; }
+    .hero h1 { font-size: 2rem; }
+    .navbar { flex-direction: column; gap: 15px; }
+    .nav-links { font-size: 0.9rem; }
+  }
